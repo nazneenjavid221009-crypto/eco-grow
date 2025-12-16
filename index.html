@@ -6,71 +6,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- QuaggaJS for REAL barcode scanning -->
-  <script src="https://unpkg.com/quagga/dist/quagga.min.js"></script>
+  <!-- REAL BARCODE SCANNER LIBRARY -->
+  <script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
 </head>
+
 <body>
-  <div id="app">
+<div id="app">
 
-    <!-- SCREEN 1: SCANNER -->
-    <section class="screen active" id="screen-scan">
-      <h1>🌱 EcoGrow</h1>
-      <p>Scan the product barcode</p>
+  <!-- SCREEN 1: CAMERA SCANNER -->
+  <section class="screen active" id="scan">
+    <h1>🌱 EcoGrow</h1>
+    <p>Scan a product barcode</p>
+    <div id="scanner"></div>
+    <p class="hint">Camera opens automatically</p>
+  </section>
 
-      <div id="scanner-container">
-        <div class="scan-frame"></div>
-        <div class="scan-line"></div>
-      </div>
+  <!-- SCREEN 2: ECO SCORE TREE -->
+  <section class="screen" id="tree">
+    <h2>Your Eco Impact</h2>
+    <div class="tree">
+      <div class="trunk"></div>
+      <div class="leaves"></div>
+    </div>
+    <p id="ecoText"></p>
+  </section>
 
-      <p id="scan-status">Waiting for barcode…</p>
-    </section>
+  <!-- SCREEN 3: QUIZ PROMPT -->
+  <section class="screen" id="quizPrompt">
+    <h2>Want to try a quick eco quiz?</h2>
+    <button onclick="startQuiz()">Yes 🌍</button>
+    <button onclick="showOutro()">No 🌱</button>
+  </section>
 
-    <!-- SCREEN 2: TREE RESULT -->
-    <section class="screen" id="screen-tree">
-      <h2 id="product-name"></h2>
+  <!-- SCREEN 4: QUIZ -->
+  <section class="screen" id="quiz">
+    <h2 id="question"></h2>
+    <div id="options"></div>
+    <p id="timer"></p>
+  </section>
 
-      <div class="tree">
-        <div class="trunk"></div>
-        <div class="leaves"></div>
-      </div>
+  <!-- SCREEN 5: QUIZ RESULT -->
+  <section class="screen" id="quizResult">
+    <h2 id="scoreText"></h2>
+    <p id="feedback"></p>
+    <button onclick="restart()">Scan Another Product</button>
+    <button onclick="showOutro()">Exit</button>
+  </section>
 
-      <p id="eco-score"></p>
-    </section>
+  <!-- SCREEN 6: OUTRO -->
+  <section class="screen" id="outro">
+    <h2>💚 Thank You</h2>
+    <p>Small choices today grow big forests tomorrow.</p>
+  </section>
 
-    <!-- SCREEN 3: QUIZ PROMPT -->
-    <section class="screen" id="screen-quiz-prompt">
-      <h2>Want to try a rapid eco quiz?</h2>
-      <div class="btn-group">
-        <button onclick="startQuiz()">Yes 🌍</button>
-        <button onclick="showOutro()">No 🌱</button>
-      </div>
-    </section>
+</div>
 
-    <!-- SCREEN 4: QUIZ -->
-    <section class="screen" id="screen-quiz">
-      <h2 id="quiz-question"></h2>
-      <div id="quiz-options"></div>
-      <p id="timer"></p>
-    </section>
-
-    <!-- SCREEN 5: QUIZ RESULT -->
-    <section class="screen" id="screen-quiz-result">
-      <h2 id="quiz-result-text"></h2>
-      <div class="btn-group">
-        <button onclick="restartApp()">Scan Another Product</button>
-        <button onclick="showOutro()">Exit</button>
-      </div>
-    </section>
-
-    <!-- SCREEN 6: OUTRO -->
-    <section class="screen" id="screen-outro">
-      <h2>Thank You 💚</h2>
-      <p>Every scan helps grow a greener future.</p>
-    </section>
-
-  </div>
-
-  <script src="questions.js"></script>
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
