@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoGrow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- QuaggaJS for REAL barcode scanning -->
+  <script src="https://unpkg.com/quagga/dist/quagga.min.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- SCREEN 1: SCANNER -->
+    <section class="screen active" id="screen-scan">
+      <h1>🌱 EcoGrow</h1>
+      <p>Scan the product barcode</p>
+
+      <div id="scanner-container">
+        <div class="scan-frame"></div>
+        <div class="scan-line"></div>
+      </div>
+
+      <p id="scan-status">Waiting for barcode…</p>
+    </section>
+
+    <!-- SCREEN 2: TREE RESULT -->
+    <section class="screen" id="screen-tree">
+      <h2 id="product-name"></h2>
+
+      <div class="tree">
+        <div class="trunk"></div>
+        <div class="leaves"></div>
+      </div>
+
+      <p id="eco-score"></p>
+    </section>
+
+    <!-- SCREEN 3: QUIZ PROMPT -->
+    <section class="screen" id="screen-quiz-prompt">
+      <h2>Want to try a rapid eco quiz?</h2>
+      <div class="btn-group">
+        <button onclick="startQuiz()">Yes 🌍</button>
+        <button onclick="showOutro()">No 🌱</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: QUIZ -->
+    <section class="screen" id="screen-quiz">
+      <h2 id="quiz-question"></h2>
+      <div id="quiz-options"></div>
+      <p id="timer"></p>
+    </section>
+
+    <!-- SCREEN 5: QUIZ RESULT -->
+    <section class="screen" id="screen-quiz-result">
+      <h2 id="quiz-result-text"></h2>
+      <div class="btn-group">
+        <button onclick="restartApp()">Scan Another Product</button>
+        <button onclick="showOutro()">Exit</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 6: OUTRO -->
+    <section class="screen" id="screen-outro">
+      <h2>Thank You 💚</h2>
+      <p>Every scan helps grow a greener future.</p>
+    </section>
+
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
